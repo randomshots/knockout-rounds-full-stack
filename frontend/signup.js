@@ -10,7 +10,7 @@ signupForm.addEventListener("submit", async (e) => {
   const password = document.querySelector("#password").value.trim();
 
   try {
-    const res = await fetch("http://localhost:5000/api/auth/signup", {
+    const res = await fetch(`${VITE_API_BASE_URL}/api/auth/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
