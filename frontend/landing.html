@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Knockout Games Tournament Tracker</title>
+    <link rel="stylesheet" href="landing.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="none,noarchive" />
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <h1><i class="fas fa-trophy"></i> Knockout Games</h1>
+        <div class="controls">
+          <!-- Show these buttons when user is signed in -->
+          <button id="new-tournament" class="btn primary auth-required">
+            <i class="fas fa-plus"></i> New Tournament
+          </button>
+          <button id="save-tournament" class="btn secondary auth-required">
+            <i class="fas fa-save"></i> Save
+          </button>
+          <button id="logout-button" class="btn secondary auth-required">
+            <i class="fas fa-sign-out-alt"></i> Log Out
+          </button>
+
+          <!-- Show this button when user is NOT signed in -->
+          <button id="auth-button" class="btn primary auth-button">
+            <i class="fas fa-user-plus"></i> Sign Up / Register
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <div id="setup-panel" class="panel">
+        <h2>Tournament Setup</h2>
+        <div class="form-group">
+          <label for="tournament-name">Tournament Name:</label>
+          <input
+            type="text"
+            id="tournament-name"
+            placeholder="Enter tournament name"
+          />
+        </div>
+        <!-- Update the player input section -->
+        <div class="form-group">
+          <label for="player-input">Add Players:</label>
+          <div class="input-group">
+            <input
+              type="text"
+              id="player-input"
+              placeholder="Enter player name"
+            />
+            <input type="text" id="atcoder-id" placeholder="AtCoder ID" />
+            <button id="add-player" class="btn secondary">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div id="players-list" class="players-container">
+          <h3>Players List <span id="player-count">(0)</span></h3>
+          <ul id="players"></ul>
+        </div>
+
+        <!-- Add this after the tournament name input in the setup-panel -->
+        <div class="form-group">
+          <label for="rounds-input">Number of Rounds:</label>
+          <input
+            type="number"
+            id="rounds-input"
+            min="1"
+            value="3"
+            placeholder="Enter number of rounds"
+          />
+        </div>
+
+        <!-- Updated difficulty selection with horizontal layout -->
+        <div class="form-group" id="difficulty-selection">
+          <label>Problem Difficulty:</label>
+          <div class="radio-group">
+            <div class="radio-option">
+              <input
+                type="radio"
+                id="difficulty-default"
+                name="difficulty-option"
+                value="default"
+                checked
+              />
+              <label for="difficulty-default">Default</label>
+            </div>
+            <div class="radio-option">
+              <input
+                type="radio"
+                id="difficulty-a"
+                name="difficulty-option"
+                value="all-a"
+              />
+              <label for="difficulty-a">All A Problems</label>
+            </div>
+            <div class="radio-option">
+              <input
+                type="radio"
+                id="difficulty-b"
+                name="difficulty-option"
+                value="all-b"
+              />
+              <label for="difficulty-b">All B Problems</label>
+            </div>
+            <div class="radio-option">
+              <input
+                type="radio"
+                id="difficulty-custom"
+                name="difficulty-option"
+                value="custom"
+              />
+              <label for="difficulty-custom">Custom</label>
+            </div>
+          </div>
+          <div id="custom-difficulty-container" class="hidden">
+            <p class="small-text">Select difficulty for each round:</p>
+            <div id="round-difficulty-inputs">
+              <!-- Round difficulty inputs will be generated here -->
+            </div>
+          </div>
+        </div>
+
+        <button id="start-tournament" class="btn primary full-width">
+          <i class="fas fa-play"></i> Start Tournament
+        </button>
+      </div>
+
+      <div id="tournament-view" class="panel hidden">
+        <div class="tournament-controls">
+          <h2 id="tournament-title">Tournament</h2>
+          <div class="btn-group">
+            <button id="prev-round" class="btn secondary">
+              <i class="fas fa-chevron-left"></i> Previous Round
+            </button>
+            <span id="round-display">Round 1</span>
+            <button id="next-round" class="btn secondary">
+              Next Round <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div id="tournament-bracket" class="bracket-container">
+          <!-- Tournament brackets will be generated here -->
+        </div>
+      </div>
+
+      <!-- Match panel with problem information -->
+      <div id="match-panel" class="panel hidden">
+        <h2>Record Match Result</h2>
+        <div class="match-problem">
+          <h3>Assigned Problem</h3>
+          <div id="problem-container" class="problem-info">
+            <p>Loading problem...</p>
+          </div>
+          <a id="problem-link" href="#" target="_blank" class="btn secondary"
+            ><i class="fas fa-external-link-alt"></i> Open Problem</a
+          >
+        </div>
+        <div class="match-details">
+          <div class="player" id="match-player1">
+            <h3>Player 1</h3>
+            <button class="btn win-btn" data-player="1">
+              <i class="fas fa-crown"></i> Mark as Winner
+            </button>
+          </div>
+          <div class="vs">VS</div>
+          <div class="player" id="match-player2">
+            <h3>Player 2</h3>
+            <button class="btn win-btn" data-player="2">
+              <i class="fas fa-crown"></i> Mark as Winner
+            </button>
+          </div>
+        </div>
+        <button id="close-match-panel" class="btn secondary full-width">
+          <i class="fas fa-times"></i> Close
+        </button>
+      </div>
+    </main>
+
+    <!-- Scoreboard panel -->
+    <div id="scoreboard-panel" class="panel hidden">
+      <h2>Tournament Results</h2>
+      <div class="tournament-controls">
+        <h3>Final Standings</h3>
+        <button id="return-to-tournament" class="btn secondary">
+          Back to Tournament
+        </button>
+      </div>
+      <div id="scoreboard" class="scoreboard-container">
+        <!-- Scores will be generated here -->
+      </div>
+      <button id="new-tournament-from-results" class="btn primary full-width">
+        <i class="fas fa-plus"></i> Start New Tournament
+      </button>
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 Knockout Games Tournament Tracker</p>
+      </div>
+    </footer>
+
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 id="modal-title"></h2>
+        <div id="modal-body"></div>
+        <div id="modal-footer">
+          <button id="modal-confirm" class="btn primary">OK</button>
+          <button id="modal-cancel" class="btn secondary">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- <script>
+      // ------------------------------
+      // JWT Auth Check for Landing Page
+      // ------------------------------
+
+      const token = localStorage.getItem("token");
+      const authRequiredElements = document.querySelectorAll(".auth-required");
+      const authButton = document.getElementById("auth-button");
+
+      // If no token found → redirect to signin.html
+      if (!token) {
+        authRequiredElements.forEach((el) => (el.style.display = "none"));
+        authButton.style.display = "inline-block";
+      } else {
+        // Verify token by pinging backend
+        fetch("http://localhost:5000/api/protected", {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+          .then((res) => {
+            if (!res.ok) throw new Error("Invalid or expired token");
+            return res.json();
+          })
+          .then((data) => {
+            console.log("Auth Verified:", data);
+            // User is authenticated → show restricted controls
+            authRequiredElements.forEach(
+              (el) => (el.style.display = "inline-block")
+            );
+            authButton.style.display = "none";
+          })
+          .catch((err) => {
+            console.error(err);
+            alert("Session expired. Please log in again.");
+            localStorage.removeItem("token");
+            window.location.href = "signin.html";
+          });
+      }
+
+      // Logout functionality
+      document.getElementById("logout-button").addEventListener("click", () => {
+        localStorage.removeItem("token");
+        window.location.href = "signin.html";
+      });
+
+      // Redirect sign-up button to signup page
+      document.getElementById("auth-button").addEventListener("click", () => {
+        window.location.href = "signin.html";
+      });
+    </script> -->
+
+    <!-- Keep your scripts below -->
+    <script src="landing.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

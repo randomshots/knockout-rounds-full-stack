@@ -1,0 +1,165 @@
+<!--
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - Knockout Games Tournament</title>
+    <link rel="stylesheet" href="landing.css" />
+    <link rel="stylesheet" href="auth.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <h1><i class="fas fa-trophy"></i> Knockout Games Tournament</h1>
+      </div>
+    </header>
+
+    <main class="container auth-container">
+      <div class="auth-panel">
+        <div class="auth-header">
+          <a href="landing.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+          </a>
+          <div class="auth-title-section">
+            <h2>Create Your Account</h2>
+            <p class="auth-subtitle">Join the tournament and compete!</p>
+          </div>
+        </div>
+
+        <form id="signup-form" class="auth-form">
+          <div class="form-group">
+            <label for="name"> <i class="fas fa-user"></i> Username </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter your username"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">
+              <i class="fas fa-envelope"></i> Email Address
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="atcoder-id">
+              <i class="fas fa-code"></i> AtCoder ID
+            </label>
+            <input
+              type="text"
+              id="atcoder-id"
+              name="atcoder-id"
+              placeholder="Enter your AtCoder ID"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="codeforces-id">
+              <i class="fas fa-laptop-code"></i> Codeforces ID
+            </label>
+            <input
+              type="text"
+              id="codeforces-id"
+              name="codeforces-id"
+              placeholder="Enter your Codeforces ID"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password"> <i class="fas fa-lock"></i> Password </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Create a password"
+              required
+              minlength="6"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="confirm-password">
+              <i class="fas fa-lock"></i> Confirm Password
+            </label>
+            <input
+              type="password"
+              id="confirm-password"
+              name="confirm-password"
+              placeholder="Confirm your password"
+              required
+              minlength="6"
+            />
+          </div>
+
+          <button type="submit" class="btn primary full-width auth-btn">
+            <i class="fas fa-user-plus"></i> Sign Up
+          </button>
+        </form>
+
+        <div class="auth-footer">
+          <p>
+            Already have an account?
+            <a href="signin.html" class="auth-link">Sign In</a>
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 Knockout Games Tournament Tracker</p>
+      </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="signup.js"></script>
+  </body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up | Knockout Games</title>
+    <link rel="stylesheet" href="landing.css" />
+  </head>
+  <body>
+    <div class="auth-container">
+      <h2>Sign Up</h2>
+      <form id="signupForm">
+        <input type="text" id="name" placeholder="Full Name" required />
+        <input type="email" id="email" placeholder="Email Address" required />
+        <input type="text" id="atcoderId" placeholder="Atcoder ID" />
+        <input type="text" id="codeforcesId" placeholder="Codeforces ID" />
+        <input type="password" id="password" placeholder="Password" required />
+        <button type="submit">Sign Up</button>
+      </form>
+      <p class="switch-text">
+        Have an account?
+        <a href="signin.html">Sign in</a>
+      </p>
+    </div>
+
+    <script src="signup.js"></script>
+  </body>
+</html>

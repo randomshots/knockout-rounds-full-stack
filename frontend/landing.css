@@ -1,0 +1,773 @@
+/* General Styles */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --light-color: #ecf0f1;
+  --dark-color: #34495e;
+  --success-color: #2ecc71;
+  --warning-color: #f39c12;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --border-radius: 5px;
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: var(--light-color);
+  color: var(--primary-color);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 15px 0; /* Reduced from 20px */
+  box-shadow: var(--shadow);
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 1.4rem; /* Reduced from 1.8rem */
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Reduced from 10px */
+}
+
+header h1 i {
+  font-size: 1.2rem; /* Add specific icon size */
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+}
+
+/* Buttons */
+.btn {
+  cursor: pointer;
+  padding: 8px 16px;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.primary {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.secondary {
+  background-color: var(--light-color);
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.win-btn {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.full-width {
+  width: 100%;
+  margin-top: 15px;
+}
+
+/* Panel */
+.panel {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: var(--shadow);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Form Elements */
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+}
+
+.input-group {
+  display: flex;
+  gap: 5px;
+}
+
+.input-group input {
+  flex-grow: 1;
+}
+
+/* Players List */
+.players-container {
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  padding: 15px;
+}
+
+.players-container h3 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+#players {
+  list-style: none;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+#players li {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#players li:last-child {
+  border-bottom: none;
+}
+
+.remove-player {
+  cursor: pointer;
+  color: var(--accent-color);
+}
+
+/* Tournament View */
+.tournament-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.btn-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#round-display {
+  font-weight: 600;
+  padding: 8px 12px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: var(--border-radius);
+}
+
+/* Tournament Bracket */
+.bracket-container {
+  overflow-x: auto;
+  padding: 20px 0;
+  min-height: 400px;
+}
+
+.round {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+}
+
+.rounds-container {
+  display: flex;
+  gap: 40px;
+  justify-content: flex-start;
+}
+
+.round-header {
+  text-align: center;
+  padding: 10px;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.match-connector {
+  position: relative;
+}
+
+.match {
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: var(--transition);
+  background-color: white;
+}
+
+.match:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+.match-player {
+  padding: 8px 12px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+}
+
+.match-player:last-child {
+  border-bottom: none;
+}
+
+.winner {
+  background-color: rgba(46, 204, 113, 0.2);
+  font-weight: 600;
+}
+
+.loser {
+  background-color: rgba(231, 76, 60, 0.1);
+  color: #7f8c8d;
+}
+
+.player-name {
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.match-pending .match-player {
+  background-color: #f8f9fa;
+  color: #aaa;
+}
+
+/* Match Panel */
+.match-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.player {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: var(--border-radius);
+}
+
+.vs {
+  padding: 0 20px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 25px;
+  border-radius: var(--border-radius);
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.close-modal {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.close-modal:hover {
+  color: var(--primary-color);
+}
+
+#modal-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 40px;
+  border-top: 1px solid #ddd;
+  color: #7f8c8d;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header .container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .controls {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .match-details {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .vs {
+    padding: 10px;
+  }
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tournament bracket lines */
+.connector {
+  position: absolute;
+  background-color: #ddd;
+}
+
+.connector.vertical {
+  width: 2px;
+}
+
+.connector.horizontal {
+  height: 2px;
+}
+
+/* Add this to the end of your CSS file */
+
+/* Scoreboard Styles */
+.scoreboard-container {
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  padding: 15px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.scoreboard-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.scoreboard-table th,
+.scoreboard-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.scoreboard-table th {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.scoreboard-table tr:nth-child(even) {
+  background-color: rgba(236, 240, 241, 0.5);
+}
+
+.scoreboard-table tr:hover {
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+.score-win {
+  color: var(--success-color);
+  font-weight: 600;
+}
+
+.score-loss {
+  color: var(--accent-color);
+}
+
+.player-rank-1 {
+  background-color: rgba(241, 196, 15, 0.2);
+  font-weight: bold;
+}
+
+.player-rank-2 {
+  background-color: rgba(189, 195, 199, 0.2);
+}
+
+.player-rank-3 {
+  background-color: rgba(190, 144, 99, 0.2);
+}
+
+/* End of scoreboard styles */
+
+/* Add these styles for the problem display */
+.match-problem {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: var(--border-radius);
+  border: 1px solid #e5e7eb;
+}
+
+.problem-info {
+  margin: 10px 0;
+}
+
+.problem-title {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--primary-color);
+}
+
+.problem-contest {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+#problem-link {
+  margin-top: 10px;
+  text-align: center;
+  display: inline-block;
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--secondary-color);
+  animation: spin 1s linear infinite;
+  margin-right: 10px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error-message {
+  color: var(--accent-color);
+  font-style: italic;
+}
+
+/* Add styles for the problem indicator in matches */
+.problem-indicator {
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  background-color: #e9ecef;
+  border-top: 1px solid #ddd;
+  color: #495057;
+}
+
+/* Style for AtCoder ID in player list */
+#players li small {
+  color: #6b7280;
+  margin-left: 5px;
+}
+
+/* Add this to your input styles */
+.input-group {
+  display: flex;
+  gap: 5px;
+}
+
+.input-group input {
+  flex-grow: 1;
+}
+
+.input-group input:first-child {
+  flex-basis: 60%;
+}
+
+.input-group input:nth-child(2) {
+  flex-basis: 40%;
+}
+
+/* Timer display styles */
+.match-timer {
+  text-align: center;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: var(--border-radius);
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* Solve time display in match */
+.solve-time {
+  margin-top: 5px;
+  font-size: 0.85rem;
+  color: var(--secondary-color);
+  font-weight: normal;
+}
+
+/* Solve times in scoreboard */
+.solve-times-container {
+  padding: 10px;
+  background-color: rgba(236, 240, 241, 0.5);
+  border-radius: var(--border-radius);
+  margin: 5px 0;
+}
+
+.solve-times-container h4 {
+  margin: 0 0 10px 0;
+  color: var(--primary-color);
+}
+
+.solve-times-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.solve-times-table th,
+.solve-times-table td {
+  padding: 6px 10px;
+  text-align: left;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.solve-times-table th {
+  font-weight: bold;
+  background-color: #e9ecef;
+}
+
+.avg-time {
+  font-weight: bold;
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+.solve-times-row {
+  background-color: transparent !important;
+}
+
+.solve-times-row:hover {
+  background-color: transparent !important;
+}
+
+/* Player details dropdown styles */
+.player-name-cell {
+  position: relative;
+}
+
+.player-name-with-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toggle-details-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--secondary-color);
+  padding: 2px 5px;
+  border-radius: 3px;
+  transition: background-color 0.2s;
+}
+
+.toggle-details-btn:hover {
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+.player-details-content {
+  padding: 15px;
+  background-color: rgba(236, 240, 241, 0.5);
+  border-radius: var(--border-radius);
+}
+
+.total-time-summary {
+  margin-bottom: 10px;
+  padding: 8px;
+  background-color: rgba(52, 152, 219, 0.1);
+  border-radius: 4px;
+  font-size: 1.1em;
+}
+
+/* Make sure the table is properly structured */
+.scoreboard-table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.scoreboard-table th,
+.scoreboard-table td {
+  padding: 10px 15px;
+}
+
+/* Ensure proper spacing between rows */
+.player-details-row td {
+  padding: 0;
+}
+
+.player-details-row .player-details-content {
+  margin: 0;
+  border-top: none;
+}
+
+/* Radio button styles */
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 12px;
+}
+
+.radio-option {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.radio-option input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* Add a divider between options */
+.radio-option:not(:last-child)::after {
+  content: "|";
+  margin-left: 15px;
+  color: #ccc;
+}
+
+/* Auth button styles */
+.auth-button {
+  background: linear-gradient(135deg, var(--secondary-color), #2980b9);
+  color: white;
+  font-weight: 600;
+}
+
+.auth-button:hover {
+  background: linear-gradient(135deg, #2980b9, var(--secondary-color));
+}
+
+/* Hide auth-required buttons by default */
+.auth-required {
+  display: none;
+}
+
+/* Show auth-required buttons when user is signed in */
+body.user-signed-in .auth-required {
+  display: inline-flex;
+}
+
+/* Hide auth button when user is signed in */
+body.user-signed-in .auth-button {
+  display: none;
+}
+
+/* ...existing code... */
+
+/* Auth button styles */
+.auth-button {
+  background: linear-gradient(135deg, var(--secondary-color), #2980b9);
+  color: white;
+  font-weight: 600;
+}
+
+.auth-button:hover {
+  background: linear-gradient(135deg, #2980b9, var(--secondary-color));
+}
+
+/* Logout button specific styles */
+#logout-button {
+  background-color: var(--accent-color);
+  color: white;
+  border: 1px solid var(--accent-color);
+}
+
+#logout-button:hover {
+  background-color: #c0392b;
+  border-color: #c0392b;
+}
+
+/* Hide auth-required buttons by default */
+.auth-required {
+  display: none;
+}
+
+/* Show auth-required buttons when user is signed in */
+body.user-signed-in .auth-required {
+  display: inline-flex;
+}
+
+/* Hide auth button when user is signed in */
+body.user-signed-in .auth-button {
+  display: none;
+}

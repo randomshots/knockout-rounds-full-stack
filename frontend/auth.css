@@ -1,0 +1,242 @@
+/* Auth Container */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 200px);
+  padding: 40px 20px;
+}
+
+.auth-panel {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 40px;
+  box-shadow: var(--shadow);
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+}
+
+/* Auth Header with Back Button */
+.auth-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: var(--transition);
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.back-button:hover {
+  background-color: var(--secondary-color);
+  color: white;
+  border-color: var(--secondary-color);
+  transform: translateX(-2px);
+}
+
+.back-button i {
+  font-size: 1.1rem;
+}
+
+.auth-title-section {
+  flex: 1;
+}
+
+.auth-title-section h2 {
+  color: var(--primary-color);
+  margin-bottom: 5px;
+  font-size: 1.8rem;
+  margin-top: 0;
+  line-height: 1.2;
+}
+
+.auth-subtitle {
+  color: #7f8c8d;
+  margin-bottom: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Auth Form */
+.auth-form {
+  margin-top: 0;
+}
+
+.auth-form .form-group {
+  margin-bottom: 20px;
+}
+
+.auth-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--primary-color);
+  font-size: 0.95rem;
+}
+
+.auth-form label i {
+  margin-right: 8px;
+  color: var(--secondary-color);
+}
+
+.auth-form input[type="text"],
+.auth-form input[type="email"],
+.auth-form input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+/* Checkbox Group */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-right: 8px;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
+
+/* Auth Button */
+.auth-btn {
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+/* Auth Footer */
+.auth-footer {
+  margin-top: 25px;
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.auth-footer p {
+  margin: 10px 0;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.auth-link {
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.auth-link:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+/* Error and Success Messages */
+.auth-message {
+  padding: 12px 15px;
+  border-radius: var(--border-radius);
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  display: none;
+}
+
+.auth-message.show {
+  display: block;
+}
+
+.auth-message.error {
+  background-color: rgba(231, 76, 60, 0.1);
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+}
+
+.auth-message.success {
+  background-color: rgba(46, 204, 113, 0.1);
+  color: var(--success-color);
+  border: 1px solid var(--success-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .auth-panel {
+    padding: 30px 20px;
+  }
+
+  .auth-title-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .auth-container {
+    padding: 20px 10px;
+  }
+
+  .auth-header {
+    gap: 10px;
+  }
+
+  .back-button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .back-button i {
+    font-size: 1rem;
+  }
+}
+
+/* Loading State */
+.auth-btn.loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.auth-btn.loading::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin-left: -8px;
+  margin-top: -8px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 0.6s linear infinite;
+}
